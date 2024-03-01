@@ -73,7 +73,7 @@ class OrderServiceTest {
 
 		// when
 		LocalDateTime currentDateTime = LocalDateTime.of(2024, 2, 28, 17, 20);
-		OrderResponse orderResponse = orderService.createOrder(request, currentDateTime);
+		OrderResponse orderResponse = orderService.createOrder(request.toServiceRequest(), currentDateTime);
 
 		// then
 		assertThat(orderResponse.getId()).isNotNull();
@@ -104,7 +104,7 @@ class OrderServiceTest {
 
 		// when
 		LocalDateTime currentDateTime = LocalDateTime.of(2024, 2, 28, 17, 20);
-		OrderResponse orderResponse = orderService.createOrder(request, currentDateTime);
+		OrderResponse orderResponse = orderService.createOrder(request.toServiceRequest(), currentDateTime);
 
 		// then
 		assertThat(orderResponse.getId()).isNotNull();
@@ -139,7 +139,7 @@ class OrderServiceTest {
 
 		// when
 		LocalDateTime currentDateTime = LocalDateTime.of(2024, 2, 28, 17, 20);
-		OrderResponse orderResponse = orderService.createOrder(request, currentDateTime);
+		OrderResponse orderResponse = orderService.createOrder(request.toServiceRequest(), currentDateTime);
 
 		// then
 		assertThat(orderResponse.getId()).isNotNull();
@@ -186,7 +186,7 @@ class OrderServiceTest {
 		LocalDateTime currentDateTime = LocalDateTime.of(2024, 2, 28, 17, 20);
 
 		// then
-		assertThatThrownBy(() -> orderService.createOrder(request, currentDateTime))
+		assertThatThrownBy(() -> orderService.createOrder(request.toServiceRequest(), currentDateTime))
 				.isInstanceOf(IllegalArgumentException.class)
 						.hasMessage("재고가 부족한 상품이 있습니다.");
 	}

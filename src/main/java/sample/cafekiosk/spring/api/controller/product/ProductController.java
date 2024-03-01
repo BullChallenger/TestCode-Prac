@@ -24,7 +24,7 @@ public class ProductController {
 
 	@PostMapping("/new")
 	public ApiResponse<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request) {
-		return ApiResponse.ok(productService.createProduct(request));
+		return ApiResponse.ok(productService.createProduct(request.toServiceRequest()));
 	}
 
 	@GetMapping("/selling")
